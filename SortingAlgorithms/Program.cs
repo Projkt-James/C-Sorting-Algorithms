@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace SortingAlgorithms
 {
@@ -8,30 +9,57 @@ namespace SortingAlgorithms
         static void Main(string[] args)
         {
 
-            List<int> i = new InputGenerator().GenerateRandomList(10);
+            List<int> i = new InputGenerator(0, 100).GenerateRandomList(10);
 
             Helpers.ConsoleNewLine(1);
             Helpers.PrintList(i, "============ Random List ============");
             Helpers.ConsoleNewLine(2);
 
-            (List<int>bubbleSort, int bubbleOperations) = Sorters.BubbleSort(i);
+            
+            //BUBBLE SORT
+            Stopwatch bubbleWatch = new Stopwatch();
+            bubbleWatch.Start();
+            (List<int>bubbleSort, int bubbleOperations) = Sorters.BubbleSort(new List<int>(i));
+            bubbleWatch.Stop();
 
             Helpers.ConsoleNewLine(1);
-            Helpers.PrintList(bubbleSort, "============ Bubble Sorted List ============ \n=> Basic Operations: " + bubbleOperations + "\n");
-            Helpers.ConsoleNewLine(2);
+            Helpers.PrintList(bubbleSort, "============ BUBBLE Sorted List ============ \n" +
+                "=> Basic Operations: " + bubbleOperations + "\n" +
+                "=> Time Taken: " + bubbleWatch.Elapsed.TotalMilliseconds + " ms \n"
+                );
+            Helpers.ConsoleNewLine(1);
 
-            (List<int> mergeSort, int mergeOperations) = Sorters.MergeSort(i);
+            // MERGE SORT
+            Stopwatch mergeWatch = new Stopwatch();
+            mergeWatch.Start();
+            (List<int> mergeSort, int mergeOperations) = Sorters.MergeSort(new List<int>(i));
+            mergeWatch.Stop();
 
             Helpers.ConsoleNewLine(1);
-            Helpers.PrintList(mergeSort, "============ Merge Sorted List ============ \n=> Basic Operations: " + mergeOperations + "\n");
+            Helpers.PrintList(mergeSort, "============ MERGE Sorted List ============ \n" +
+                "=> Basic Operations: " + mergeOperations + "\n" + 
+                "=> Time Taken: " + mergeWatch.Elapsed.TotalMilliseconds + " ms \n"
+                );
+            Helpers.ConsoleNewLine(1);
+
+            //INSERTION SORT
+            Stopwatch insertionWatch = new Stopwatch();
+            insertionWatch.Start();
+            (List<int> insertionSort, int insertionOperations) = Sorters.InsertionSort(new List<int>(i), i.Count - 1);
+            insertionWatch.Stop();
+
+            Helpers.ConsoleNewLine(1);
+            Helpers.PrintList(mergeSort, "============ INSERTION Sorted List ============ \n" +
+                "=> Basic Operations: " + insertionOperations + "\n" +
+                "=> Time Taken: " + insertionWatch.Elapsed.TotalMilliseconds + " ms \n"
+                );
             Helpers.ConsoleNewLine(2);
-
-
-
+           
 
             Helpers.ConsoleNewLine(1);
             Console.Write("Press any key to continue...");
             Console.ReadKey();
+
         }
     }
 
