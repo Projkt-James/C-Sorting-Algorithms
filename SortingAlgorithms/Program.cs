@@ -14,12 +14,19 @@ namespace SortingAlgorithms
             Helpers.PrintList(i, "============ Random List ============");
             Helpers.ConsoleNewLine(2);
 
-            (List<int>temp, int basicOperations) = Sorters.BubbleSort(i);
-            i = temp;
+            (List<int>bubbleSort, int basicOperations) = Sorters.BubbleSort(i);
 
             Helpers.ConsoleNewLine(1);
-            Helpers.PrintList(i, "============ Bubble Sorted List ============ \n=> Basic Operations: " + basicOperations + "\n");
+            Helpers.PrintList(bubbleSort, "============ Bubble Sorted List ============ \n=> Basic Operations: " + basicOperations + "\n");
             Helpers.ConsoleNewLine(2);
+
+            List<int> mergeSort = Sorters.MergeSort(i, Sorters.MergeType.TopDown);
+
+            Helpers.ConsoleNewLine(1);
+            Helpers.PrintList(mergeSort, "============ Merge Sorted List ============");
+            Helpers.ConsoleNewLine(2);
+
+
 
 
             Helpers.ConsoleNewLine(1);
