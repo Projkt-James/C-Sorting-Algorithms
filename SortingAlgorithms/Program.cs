@@ -14,16 +14,16 @@ namespace SortingAlgorithms
             Helpers.PrintList(i, "============ Random List ============");
             Helpers.ConsoleNewLine(2);
 
-            (List<int>bubbleSort, int basicOperations) = Sorters.BubbleSort(i);
+            (List<int>bubbleSort, int bubbleOperations) = Sorters.BubbleSort(i);
 
             Helpers.ConsoleNewLine(1);
-            Helpers.PrintList(bubbleSort, "============ Bubble Sorted List ============ \n=> Basic Operations: " + basicOperations + "\n");
+            Helpers.PrintList(bubbleSort, "============ Bubble Sorted List ============ \n=> Basic Operations: " + bubbleOperations + "\n");
             Helpers.ConsoleNewLine(2);
 
-            List<int> mergeSort = Sorters.MergeSort(i, Sorters.MergeType.TopDown);
+            (List<int> mergeSort, int mergeOperations) = Sorters.MergeSort(i);
 
             Helpers.ConsoleNewLine(1);
-            Helpers.PrintList(mergeSort, "============ Merge Sorted List ============");
+            Helpers.PrintList(mergeSort, "============ Merge Sorted List ============ \n=> Basic Operations: " + mergeOperations + "\n");
             Helpers.ConsoleNewLine(2);
 
 
@@ -43,8 +43,8 @@ namespace SortingAlgorithms
 
         public InputGenerator(int listMin = 0, int listMax = 100)
         {
-            this.min = listMin - 1;
-            this.max = listMax + 1;
+            this.min = listMin;
+            this.max = listMax;
             rand = new Random();
         }
 
